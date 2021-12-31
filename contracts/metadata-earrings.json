@@ -1,0 +1,12 @@
+{
+  "name" : "새콤달콤 귀고리",
+  "category" : "귀고리",
+  "stat" : {
+    "STR" : 1,
+    "DEX" : 1,
+    "INT" : 1,
+    "LUK" : 1
+  },
+  "price": 3,
+  "image": "https://gateway.pinata.cloud/ipfs/QmVqjGBGhAL15XkZWDTvMUNxp7AtdBxpqvVQvnDXtgujpA"
+}
