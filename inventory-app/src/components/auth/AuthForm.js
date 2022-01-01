@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import OpenColor from '../../../node_modules/open-color/open-color.json';
-
+import Button from '../common/Button';
 
 const lightGray = OpenColor.gray[2];
 const deepGray = OpenColor.gray[7];
@@ -10,6 +10,11 @@ const deepGray = OpenColor.gray[7];
  * 로그인 폼
  */
 const AuthFormBlock = styled.div`
+  h3 {
+    margin: 0;
+    color: ${OpenColor.gray[8]};
+    margin-bottom: 1rem;
+  }
 `;
 
 
@@ -29,31 +34,31 @@ const StyledInput = styled.input`
     margin-top: 1rem;
   }
 `;
-
-const StyledButton = styled.button`
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.25rem 1rem;
-  color: white;
-  outline: none;
-  cursor: pointer;
+const ButtonWithMarginTop = styled(Button)`
+  margin-top: 1rem;
 `;
 
-const AuthForm = () => {
+const AuthForm = ({form, onChange, onSubmit }) => {
   return(
     <AuthFormBlock>
       <h3>로그인</h3>
-      <form>
-        <StyledInput autoComplete="userAddress" name="userAddress" placeholder="지갑 주소" />
+      <form onSubmit={onSubmit}>
+        <StyledInput
+          autoComplete="userAddress"
+          name="userAddress"
+          placeholder="지갑 주소"
+          onChange={onChange}
+          value={form.userAddress}
+        />
         <StyledInput
           autoComplete="password"
           name="password"
           placeholder="비밀번호"
           type="password"
+          onChange={onChange}
+          value={form.password}
         />
-        <StyledButton>로그인</StyledButton>
+        <ButtonWithMarginTop green fullWidth>로그인</ButtonWithMarginTop>
       </form>
     </AuthFormBlock>
   );
