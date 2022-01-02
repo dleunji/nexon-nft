@@ -3,11 +3,12 @@ import { all } from 'redux-saga/effects';
 import auth, { authSaga } from './auth';
 import loading from './loading';
 import user, { userSaga } from './user';
-
+import search from './search';
 const rootReducer = combineReducers({
   auth,
   loading,
   user,
+  search
 });
 
 export function* rootSaga() {

@@ -38,7 +38,6 @@ const LoginForm = ({ history }) => {
 
   // 로그인 시도 시
   useEffect(() => {
-    console.log('useEffect', auth, authError);
     if(authError) {
       console.log('오류 발생');
       console.log(authError);
@@ -53,6 +52,11 @@ const LoginForm = ({ history }) => {
   useEffect(()=> {
     if(user){
       history.push('/');
+      try {
+        localStorage.setItem('user', JSON.stringify(user));
+      } catch (e) {
+        console.log('localStorage is not working');
+      }
     }
   }, [history, user]);
 

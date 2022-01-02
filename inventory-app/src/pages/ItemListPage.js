@@ -1,7 +1,13 @@
 import React from 'react';
+import HeaderContainer from '../containers/common/HeaderContainer';
 
 const ItemListPage = () => {
-  return <div> 아이템 리스트 </div>
+  return (
+    <>
+      <HeaderContainer />
+      <div>안녕하세요</div>
+    </>
+  )
 };
 
 export default ItemListPage;

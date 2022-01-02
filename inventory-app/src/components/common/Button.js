@@ -1,8 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 import OpenColor from '../../../node_modules/open-color/open-color.json';
 
-const StyledButton = styled.button`
+const buttonStyle = css`
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -29,14 +30,28 @@ const StyledButton = styled.button`
   ${props => 
     props.green && 
     css`
-      background: ${OpenColor.green[8]};
+      background: ${OpenColor.green[7]};
       &:hover {
-        background: ${OpenColor.green[7]};
+        background: ${OpenColor.green[5]};
       }
     `
   }
 
 `;
 
-const Button = props => <StyledButton {...props} />;
+const StyledButton = styled.button`
+  ${buttonStyle}
+`;
+
+const StyledLink = styled(Link)`
+  ${buttonStyle}
+`;
+
+const Button = props => {
+  return props.to ? (
+    <StyledLink {...props} green={props.green ? 1 : 0} />
+  ) : (
+    <StyledButton {...props} />
+  );
+};
 export default Button;
