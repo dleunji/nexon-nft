@@ -11,26 +11,19 @@ namespace NexonNFTLibrary.Services
 {
     public class NexonNFTContractService : INexonNFTContractService
     {
-        //public Web3 Web3 { get; set; }
-        //public ContractHandler ContractHandler { get; set; }
+        public string ContractAddress { get; set; }
 
         /// <summary>
         /// 생성자
         /// </summary>
-        /// <param name="web3"></param>
-        /// <param name="contractAddress"></param>
-        //public NexonNFTContractService(Web3 web3, string contractAddress)
-        //{
-        //    Web3 = web3;
-        //    ContractHandler = web3.Eth.GetContractHandler(contractAddress);
-        //}
+        public NexonNFTContractService(string contractAddress)
+        {
+            ContractAddress = contractAddress;
+        }
 
         /// <summary>
         /// 토큰 발행 
         /// </summary>
-        /// <param name="recipient"></param>
-        /// <param name="tokenURI"></param>
-        /// <returns></returns>
         public Task<string> MintNFT(string recipient, string tokenURI)
         {
             var account = new Account("0x5350d65309d8558309aebc46554478e86ee58fa96191390c78b068e5fd5086da", Nethereum.Signer.Chain.Ropsten);
@@ -49,10 +42,6 @@ namespace NexonNFTLibrary.Services
         /// <summary>
         /// from 에서 to로 특정 tokenId를 지닌 NFT 전달
         /// </summary>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <param name="tokenId"></param>
-        /// <returns></returns>
         public Task<string> TransferFromRequestAsync(string from, string to, BigInteger tokenId)
         {
             var account = new Account("0x5350d65309d8558309aebc46554478e86ee58fa96191390c78b068e5fd5086da", Nethereum.Signer.Chain.Ropsten);

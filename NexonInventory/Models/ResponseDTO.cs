@@ -1,8 +1,11 @@
 ﻿using System;
 namespace NexonInventory.Models
 {
-    public class OutputDTO
+    public class ResponseDTO
     {
-        public string HashCode { get; set; }
+        //public string Id { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public string Message { get; set; }
+        public object Value { get; set; }
     }
 }
