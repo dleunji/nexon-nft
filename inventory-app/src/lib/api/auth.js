@@ -1,6 +1,16 @@
-import client from './client';
-
 export const login = ({ userAddress, password }) => 
-  client.post('/auth/login', {userAddress, password});
+  fetch('/inventory/auth/login', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({address: userAddress, password: password})
+    });
 
-export const check = () => client.get('/auth/check');
+export const check = () => 
+  fetch('inventory/auth/check', {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });

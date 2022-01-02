@@ -29,7 +29,7 @@ const LoginForm = ({ history }) => {
   const onSubmit = e => {
     e.preventDefault();
     const {userAddress, password } = form;
-    dispatch(login({userAddress, password}));
+    dispatch(login({ userAddress, password }));
   }
   // 컴포넌트가 처음 렌더링될 때 form을 초기화
   useEffect(() => {
@@ -38,6 +38,7 @@ const LoginForm = ({ history }) => {
 
   // 로그인 시도 시
   useEffect(() => {
+    console.log('useEffect', auth, authError);
     if(authError) {
       console.log('오류 발생');
       console.log(authError);
@@ -45,7 +46,7 @@ const LoginForm = ({ history }) => {
     }
     if(auth) {
       console.log('로그인 성공');
-      console.log(check());
+      dispatch(check());
     }
   }, [auth, authError, dispatch]);
 

@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 function App() {
   return (
     <>
-      <Route component={ItemListPage} path={['/@:userAddress','/']} exact />
+      <Route component={ItemListPage} path={['/:userAddress','/']} exact />
       <Route component={LoginPage} path='/login' exact/>
     </>
   );
