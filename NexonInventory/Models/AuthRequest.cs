@@ -1,10 +1,9 @@
 ﻿using System;
 namespace NexonInventory.Models
 {
-    public class UserRequest
+    public class AuthRequest
     {
-        public UserRequest()
-        {
-        }
+        public string Address { get; set; }
+        public string Password { get; set; }
     }
 }
