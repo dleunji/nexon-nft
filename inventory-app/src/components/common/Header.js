@@ -73,7 +73,7 @@ const Header = ({ user, onLogout, onChange, search, OrderDropdown }) => {
             value={search}
           />
           {/* 정렬 기준 */}
-          <OrderDropdown />
+          {/* <OrderDropdown /> */}
           {user? (
             <div className="right">
               <UserInfo>{user.userAddress}</UserInfo>

@@ -41,6 +41,7 @@ const SearchBox = ({onChange, value}) => {
         value={value}
         onChange={onChange}
         autoComplete="search"
+        name="search"
       />
       <button type="submit">검색</button>
     </StyledSearchForm>

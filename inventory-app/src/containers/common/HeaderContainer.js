@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/common/Header';
 import { logout } from '../../modules/user';
 import { changeField, initializeField } from '../../modules/search';
-import OrderDropdownContainer from './OrderDropdownContainer';
+// import OrderDropdownContainer from './OrderDropdownContainer';
 const HeaderContainer = () => {
   const dispatch = useDispatch();
   const { user, search } = useSelector(({ user, search }) => ({
@@ -18,6 +18,7 @@ const HeaderContainer = () => {
   // 인풋 변경 이벤트 핸들러
   const onChange = e => {
     const { value, name } = e.target;
+    console.log(name, value);
     dispatch(
       changeField({
         key: name,
@@ -37,7 +38,6 @@ const HeaderContainer = () => {
       onLogout={onLogout} 
       onChange={onChange} 
       search={search}
-      OrderDropdown={OrderDropdownContainer}
     />
   );
 };
