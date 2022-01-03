@@ -19,17 +19,6 @@ const initialState = {
 
 const search = handleActions(
   {
-    // [CHANGE_FIELD]: (state, { payload: {key, value} }) =>
-    // // {
-    // //   produce(state, draft => {
-    // //     draft[key] = value;
-    // //   })
-    // // },
-    // ({
-    //   ...state,
-    //   [key]: value
-    // }),
-
     [CHANGE_FIELD]: (state, { payload: {key, value} }) => 
       produce(state, draft => {
         draft[key] = value; // e.g. state.userAddress 변경

@@ -34,7 +34,7 @@ const buttonStyle = css`
       &:hover {
         background: ${OpenColor.green[5]};
       }
-    `
+    `}
   }
 
 `;
@@ -49,7 +49,7 @@ const StyledLink = styled(Link)`
 
 const Button = props => {
   return props.to ? (
-    <StyledLink {...props} green={props.green ? 1 : 0} />
+    <StyledLink {...props} green={props.green ? 1 : 0}/>
   ) : (
     <StyledButton {...props} />
   );

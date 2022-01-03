@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Responsive from './Responsive';
 import Button from './Button';
 import OpenColor from '../../../node_modules/open-color/open-color.json';
-import Search from './Search';
+import SearchBox from './Search';
 
 const HeaderBlock = styled.div`
   position: fixed;
@@ -61,17 +61,19 @@ const StyledSearch = styled.input`
   }
 `;
 
-const Header = ({ user, onLogout, onChange, search }) => {
+const Header = ({ user, onLogout, onChange, search, OrderDropdown }) => {
   return(
     <>
       <HeaderBlock>
         <Wrapper>
           <Link to="/" className="logo">Nexon Inventory</Link>
-          {/* 여기에 검색창과 정렬 기준 삽입 */}
-          <Search
+          {/* 검색창 */}
+          <SearchBox
             onChange={onChange}
             value={search}
           />
+          {/* 정렬 기준 */}
+          <OrderDropdown />
           {user? (
             <div className="right">
               <UserInfo>{user.userAddress}</UserInfo>

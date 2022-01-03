@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/common/Header';
 import { logout } from '../../modules/user';
 import { changeField, initializeField } from '../../modules/search';
-
+import OrderDropdownContainer from './OrderDropdownContainer';
 const HeaderContainer = () => {
   const dispatch = useDispatch();
   const { user, search } = useSelector(({ user, search }) => ({
@@ -33,10 +33,11 @@ const HeaderContainer = () => {
 
   return (
     <Header 
-      user={user} 
+      user={user}
       onLogout={onLogout} 
       onChange={onChange} 
       search={search}
+      OrderDropdown={OrderDropdownContainer}
     />
   );
 };
