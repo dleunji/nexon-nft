@@ -1,41 +1,40 @@
 import  { createAction, handleActions } from 'redux-actions';
 
-const CLICK_ORDER = 'dropdown/CLICK_ORDER';
-const HOVER_ORDER = 'dropdown/HOVER_ORDER';
+const TOGGLE_ORDER = 'dropdown/TOGGLE_ORDER';
+// const HOVER_ORDER = 'dropdown/HOVER_ORDER';
 const CHANGE_ORDER = 'dropdown/CHANGE_ORDER';
 const INITIALIZE_ORDER = 'dropdown/INITIALIZE_ORDER';
 
-export const clickOrder = createAction(CLICK_ORDER);
-export const hoverOrder = createAction(HOVER_ORDER, hover => hover);
-export const changeOrder = createAction(CHANGE_ORDER, order => order);
+export const toggleOrder = createAction(TOGGLE_ORDER);
+// export const hoverOrder = createAction(HOVER_ORDER, idx => idx);
+export const changeOrder = createAction(CHANGE_ORDER, idx => idx);
 export const initializeOrder = createAction(INITIALIZE_ORDER);
 
 const initialState = {
   display: false,
-  hover: 0,
-  order: 0,
+  // hover: -1,
+  order: null,
 };
 
 const order = handleActions(
   {
-    [CLICK_ORDER] : (state) => ({
+    [TOGGLE_ORDER] : (state) => ({
       ...state,
-      display: !['display'],
+      display: !state.display,
     }),
-    [CHANGE_ORDER] : (state, {payload: order}) => ({
+    [CHANGE_ORDER] : (state, {payload: {value}}) => ({
       ...state,
-      order: order
+      order: value
     }),
     [INITIALIZE_ORDER] : (state) => ({
       ...state,
       display: initialState['display'],
-      hover: initialState['hover'],
       order: initialState['order']
     }),
-    [HOVER_ORDER]: (state, {payload: hover}) => ({
-      ...state,
-      hover: hover
-    })
+    // [HOVER_ORDER]: (state, {payload: idx}) => ({
+    //   ...state,
+    //   hover: idx
+    // })
   },
   initialState
 );

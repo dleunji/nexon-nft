@@ -5,7 +5,8 @@ import Responsive from './Responsive';
 import Button from './Button';
 import OpenColor from '../../../node_modules/open-color/open-color.json';
 import SearchBox from './Search';
-
+// import OrderDropdown from './OrderDropdown';
+import { Dropdown } from 'reactjs-dropdown-component';
 const HeaderBlock = styled.div`
   position: fixed;
   width: 100%;
@@ -49,19 +50,56 @@ const UserInfo = styled.div`
   margin-right: 1rem;
 `;
 
-const StyledSearch = styled.input`
-  font-size: 1rem;
-  border: 1px solid ${OpenColor.gray[3]};
-  padding-bottom: 0.5rem;
-  outline: none;
-  width: 30%;
-  &:focus {
-    color: black;
-    border: 1px solid ${OpenColor.gray[5]};
+const orderList = [
+  {
+    label: '안녕',
+    value: 0
+  },
+  {
+    label :'hello',
+    value: 1
+  },
+  {
+    label: 'bonjour',
+    value: 2
+  },
+  {
+    label: 'bonjour',
+    value: 3
+  },
+  {
+    label: 'bonjour',
+    value: 4
   }
-`;
+];
 
-const Header = ({ user, onLogout, onChange, search, OrderDropdown }) => {
+const orderStyle = {
+  wrapper: { 
+    fontSize: '1rem',
+    width:'8rem',
+  },
+  header: {
+    borderColor: OpenColor.gray[8]
+  },
+  headerTitle : {
+    margin: 0,
+    padding: '0 0.5rem',
+    color: OpenColor.gray[8],
+    fontWeight: 'normal'
+  },
+  listItem: {
+    fontSize: '1rem',
+    color: OpenColor.gray[8],
+    fontWeight: 'normal'
+  },
+  list :{
+    fontSize: '1rem',
+    color: OpenColor.gray[8],
+    fontWeight: 'normal'
+  }
+};
+
+const Header = ({ user, onLogout, onChange, search, onChangeOrder, onToggle, display, order }) => {
   return(
     <>
       <HeaderBlock>
@@ -73,7 +111,14 @@ const Header = ({ user, onLogout, onChange, search, OrderDropdown }) => {
             value={search}
           />
           {/* 정렬 기준 */}
-          {/* <OrderDropdown /> */}
+          <Dropdown
+            name="order"
+            title="정렬 기준"
+            list={orderList}
+            onChange={onChangeOrder}
+            styles={orderStyle}
+          />
+
           {user? (
             <div className="right">
               <UserInfo>{user.userAddress}</UserInfo>

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "react-fontawesome": "^1.7.1",
+    "react-ringing-bell": "^0.1.0",
+    "reactjs-dropdown-component": "^1.2.0"
+  }
+}
