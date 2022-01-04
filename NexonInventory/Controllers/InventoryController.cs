@@ -76,7 +76,7 @@ namespace NexonInventory.Controllers
             try
             {
                 var balance = await _service.GetBalance(address);
-                return Ok(new ResponseDTO { Message = "Get Balance Success", Value = balance });
+                return Ok(new ResponseDTO { Message = "Get Balance Success", Value = (ulong)balance });
             }
             catch (Exception e)
             {
