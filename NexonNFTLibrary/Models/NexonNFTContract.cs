@@ -44,6 +44,15 @@ namespace NexonNFTLibrary.Models
         public virtual string Owner { get; set; }
     }
 
+    public partial class TokenURIFunction : TokenURIFunctionBase { }
+    [Function("tokenURI", "string")]
+    public class TokenURIFunctionBase : FunctionMessage
+    {
+        [Parameter("uint256", "tokenId", 1)]
+        public virtual BigInteger TokenId { get; set; }
+    }
+
+
     [FunctionOutput]
     public class TokenOfOwnerOutputDTO : IFunctionOutputDTO
     {

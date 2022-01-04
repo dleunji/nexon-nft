@@ -16,5 +16,6 @@ namespace NexonNFTLibrary.Interfaces
         Task<string> TransferFromRequestAsync(string from, string to, BigInteger tokenId);
         Task<BigInteger> GetBalance(string address);
         Task<TokenOfOwnerOutputDTO> TokensOfOwnerRequestAsync(string address);
+        Task<string> TokenURI(BigInteger tokenId);
     }
 }
