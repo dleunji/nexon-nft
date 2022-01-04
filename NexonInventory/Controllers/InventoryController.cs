@@ -76,7 +76,9 @@ namespace NexonInventory.Controllers
             try
             {
                 var balance = await _service.GetBalance(address);
-                return Ok(new ResponseDTO { Message = "Get Balance Success", Value = (ulong)balance });
+                // convert wei to ether 
+                var ether = Web3.Convert.FromWei(balance);
+                return Ok(new ResponseDTO { Message = "Get Balance Success", Value = ether });
             }
             catch (Exception e)
             {
