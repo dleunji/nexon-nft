@@ -52,9 +52,9 @@ export default handleActions(
       ...state,
       user,
     }),
-    [CHECK_SUCCESS] : (state, { payload: user}) => ({
+    [CHECK_SUCCESS] : (state, { payload: user } ) => ({
       ...state,
-      user : user,
+      user : user.value,
       checkError: null,
     }),
     [CHECK_FAILURE]: (state, { payload: error }) => ({

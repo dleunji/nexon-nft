@@ -77,7 +77,8 @@ const Spacer = styled.div`
 `;
 
 const UserInfo = styled.div`
-  font-weight: 800;
+  font-size: 1rem;
+  font-weight: 300;
   margin-right: 1rem;
 `;
 
@@ -144,6 +145,7 @@ const LoginButton = styled(Link)`
   padding-left: 1rem;
 `;
 
+const userAddress = localStorage.getItem('user');
 
 const Header = ({ user, onLogout, onChange, search, onChangeOrder, onToggle, display, order }) => {
   return(
@@ -182,10 +184,9 @@ const Header = ({ user, onLogout, onChange, search, onChangeOrder, onToggle, dis
           <div className="rightBlock">
             {user? (
               <div className="right">
-                <UserInfo>{user.userAddress}</UserInfo> 
-                <span> 님의 잔액 0</span>
+                <UserInfo>내 지갑: {userAddress}</UserInfo> 
                 {/* 잔고 */}
-                <LoginButton className="log in"onClick={onLogout}>로그아웃</LoginButton>
+                <LoginButton className="log in"onClick={onLogout} to="/#">로그아웃</LoginButton>
               </div>
             ): (
               <div className="right">

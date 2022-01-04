@@ -59,7 +59,6 @@ const HeaderContainer = () => {
       onChange={onChange}
       search={search}
       onChangeOrder={onChangeOrder}
-      // onToggle={onToggle}
       onToggle={onToggle}
       display={display}
       order={order}

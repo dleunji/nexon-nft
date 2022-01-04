@@ -1,4 +1,4 @@
-export const login = ({ userAddress, password }) => 
+export const login = ({ userAddress, password }) =>
   fetch('/inventory/auth/login', {
     method: 'POST',
     headers: {
