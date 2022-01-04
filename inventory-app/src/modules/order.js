@@ -13,7 +13,7 @@ export const initializeOrder = createAction(INITIALIZE_ORDER);
 const initialState = {
   display: false,
   // hover: -1,
-  order: null,
+  order: 0,
 };
 
 const order = handleActions(
@@ -22,7 +22,7 @@ const order = handleActions(
       ...state,
       display: !state.display,
     }),
-    [CHANGE_ORDER] : (state, {payload: {value}}) => ({
+    [CHANGE_ORDER] : (state, {payload: value}) => ({
       ...state,
       order: value
     }),

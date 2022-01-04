@@ -2,18 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import OpenColor from '../../../node_modules/open-color/open-color.json';
 import Button from '../common/Button';
-
-const lightGray = OpenColor.gray[2];
-const deepGray = OpenColor.gray[7];
-
 /**
  * 로그인 폼
  */
 const AuthFormBlock = styled.div`
   h3 {
     margin: 0;
-    color: ${OpenColor.gray[8]};
+    color: ${OpenColor.gray[7]};
     margin-bottom: 1rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -22,13 +19,13 @@ const AuthFormBlock = styled.div`
 const StyledInput = styled.input`
   font-size: 1rem;
   border: none;
-  border-bottom: 1px solid ${lightGray};
+  border-bottom: 1px solid ${OpenColor.gray[2]};
   padding-bottom: 0.5rem;
   outline: none;
   width: 100%;
   &:focus {
     color: black;
-    border-bottom: 1px solid ${deepGray};
+    border-bottom: 1px solid ${OpenColor.gray[7]};
   }
   & + & {
     margin-top: 1rem;

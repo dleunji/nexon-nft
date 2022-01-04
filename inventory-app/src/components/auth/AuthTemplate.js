@@ -23,6 +23,10 @@ const AuthTemplateBlock = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 const WhiteBox = styled.div`

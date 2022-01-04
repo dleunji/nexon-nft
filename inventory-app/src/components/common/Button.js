@@ -30,13 +30,12 @@ const buttonStyle = css`
   ${props => 
     props.green && 
     css`
-      background: ${OpenColor.green[7]};
+      background: ${OpenColor.green[8]};
       &:hover {
         background: ${OpenColor.green[5]};
       }
     `}
   }
-
 `;
 
 const StyledButton = styled.button`
