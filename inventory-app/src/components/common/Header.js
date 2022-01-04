@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Responsive from './Responsive';
-import Button from './Button';
 import OpenColor from '../../../node_modules/open-color/open-color.json';
 import SearchBox from './Search';
-import { Dropdown, DropdownButton, Item, Menu, Toggle } from 'react-bootstrap';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+import {OverlayTrigger, Tooltip} from 'react-bootstrap';
 const HeaderBlock = styled.div`
   position: fixed;
   width: 100%;
@@ -17,7 +17,7 @@ const HeaderBlock = styled.div`
   .middleBlock {
     display: flex;
     align-items: center;
-    margin-left: 3rem;
+    margin-left: 6rem;
     
     // 정렬버튼 CSS 커스터마이징
     #input-group-dropdown-1 {
@@ -42,8 +42,13 @@ const HeaderBlock = styled.div`
   }
   .log {
     color: ${OpenColor.gray[8]};
+    :hover {
+      color: ${OpenColor.gray[6]};
+    }
   }
-  .
+  .in {
+    margin-left: 20rem;
+  }
 `;
 
 /**
@@ -51,9 +56,11 @@ const HeaderBlock = styled.div`
  */
 
 const Wrapper = styled(Responsive)`
+  padding: 0 2rem;
   height: 4rem;
   display: flex;
   align-items: center;
+  // justify-content: space-between;
   .logo {
     font-size: 1.6rem;
     font-weight: bold;
@@ -61,10 +68,12 @@ const Wrapper = styled(Responsive)`
     font-family: 'Bungee Shade', cursive;
     color: ${OpenColor.gray[9]};
   }
-
-  .right {
-    display: flex;
-    aligh-items: center;
+  .rightBlock {
+    padding-left: 10rem;
+    .right {
+      display: flex;
+      aligh-items: center;
+    }
   }
 `;
 
@@ -77,60 +86,62 @@ const Spacer = styled.div`
 `;
 
 const UserInfo = styled.div`
-  font-size: 1rem;
-  font-weight: 300;
-  margin-right: 1rem;
+  font-size : 1rem;
+  display: flex;
+  justify-content: end;
+  width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-items: center;
+  .balance {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 10rem;
+    text-align: center;
+    align-items: center;
+    margin: 0 0.5rem;
+    .fa-ethereum {
+      padding-right: 0.5rem;
+    }
+    .ether-num {
+      padding-right: 0.1rem;
+      overflow: hidden;
+      text-overflow: 
+      width: 5rem;
+    }
+  }
 `;
 
 const orderList = [
-
   {
     label: '정렬 조건을 선택하세요',
     value: 0
   },
   {
-    label :'가격 오름차순',
+    label :'낮은 금액순',
     value: 1
   },
   {
-    label: 'STR 내림차순',
+    label: '높은 금액순',
     value: 2
   },
   {
-    label: 'LUK 내림차순',
+    label: '근력 높은순',
     value: 3
   },
   {
-    label: 'INT 내림차순',
+    label: '지능 높은순',
     value: 4
-  }
+  },
+  {
+    label: '민첩 높은순',
+    value: 5
+  },
+  {
+    label: '운 높은순',
+    value: 6
+  },
 ];
-
-const orderStyle = {
-  wrapper: { 
-    fontSize: '1rem',
-    width:'6rem',
-  },
-  header: {
-    border:'none',
-  },
-  headerTitle : {
-    margin: 0,
-    padding: '0px 0rem 0 1rem',
-    color: OpenColor.gray[8],
-    fontWeight: 'normal'
-  },
-  listItem: {
-    fontSize: '1rem',
-    color: OpenColor.gray[8],
-    fontWeight: 'normal'
-  },
-  list :{
-    fontSize: '1rem',
-    color: OpenColor.gray[8],
-    fontWeight: 'normal'
-  }
-};
 
 const LoginButton = styled(Link)`
   border: none;
@@ -147,7 +158,7 @@ const LoginButton = styled(Link)`
 
 const userAddress = localStorage.getItem('user');
 
-const Header = ({ user, onLogout, onChange, search, onChangeOrder, onToggle, display, order }) => {
+const Header = ({ user, onLogout, onChange, search, onChangeOrder, order, balance }) => {
   return(
     <>
       <HeaderBlock>
@@ -166,16 +177,19 @@ const Header = ({ user, onLogout, onChange, search, onChangeOrder, onToggle, dis
                 id="input-group-dropdown-1"
               > 
                 {orderList.map((item)=>
-                  { 
-                    return (
-                      <Dropdown.Item
-                        key={item.value} 
-                        href="#"
-                        onClick={() => onChangeOrder(item.value)}
-                      > 
-                        {item.label} 
-                      </Dropdown.Item>
-                    );
+                  {
+                    // 안내문구 생략
+                    if (item.value!=0){
+                      return (
+                        <Dropdown.Item
+                          key={item.value} 
+                          href="#"
+                          onClick={() => onChangeOrder(item.value)}
+                        > 
+                          {item.label} 
+                        </Dropdown.Item>
+                      );
+                    }
                   })}
               </DropdownButton>
             </div>
@@ -184,18 +198,37 @@ const Header = ({ user, onLogout, onChange, search, onChangeOrder, onToggle, dis
           <div className="rightBlock">
             {user? (
               <div className="right">
-                <UserInfo>내 지갑: {userAddress}</UserInfo> 
+                <UserInfo>
+                  {/* <div className="wrapper wallet">
+                    <i className="fas fa-wallet"></i>
+                      <b>{userAddress}</b>
+                  </div> */}
+                  <div className="balance">
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={ <Tooltip id="button-tooltip-2">{userAddress}</Tooltip> }
+                    >
+                      {({ref, ...triggerHandler}) => (
+                        <div {...triggerHandler}>
+                          <i className="fab fa-ethereum" ref={ref} /> 
+                            <b className="ether-num"> {balance.toFixed(4)}Ether</b>
+                        </div>
+                      )}
+                    </OverlayTrigger>
+                </div>
                 {/* 잔고 */}
-                <LoginButton className="log in"onClick={onLogout} to="/#">로그아웃</LoginButton>
+                </UserInfo>
+                <LoginButton className="log out"onClick={onLogout} to="/#">로그아웃</LoginButton>
               </div>
             ): (
               <div className="right">
-                <LoginButton className="log out" to="/login">로그인</LoginButton>
+                <LoginButton className="log in" to="/login">로그인</LoginButton>
               </div>
             )}
           </div>
         </Wrapper>
       </HeaderBlock>
+      <Spacer/>
     </>
   );
 };

@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/common/Header';
-import { logout } from '../../modules/user';
+import { changeBalance, logout } from '../../modules/user';
 import { changeField, initializeField } from '../../modules/search';
-import { initializeOrder, toggleOrder, changeOrder } from "../../modules/order";
+import { initializeOrder, changeOrder } from "../../modules/order";
+import { getBalance } from '../../lib/api/user';
 
 const HeaderContainer = () => {
   const dispatch = useDispatch();
-  const { user, search, display, order  } = useSelector(({ user, search, order }) => ({
+  const { user, balance, search, order  } = useSelector(({ user, search, order }) => ({
     user: user.user,
+    balance : user.balance,
     search: search.search,
-    display: order.display,
-    order: order.order
+    order: order.order,
   }));
 
+  const userAddress = localStorage.getItem('user');
 
   const onLogout = () => {
     dispatch(logout());
@@ -31,26 +33,34 @@ const HeaderContainer = () => {
     );
   };
 
-  // hover 효과
-  const onToggle = () => {
-    dispatch((toggleOrder()));
-  };
-
-  // Toggle show / hide
-  // const onToggle = () => {
-  //   dispatch((toggleOrder()));
-  // };
-
   // 정렬 기준 변경
   const onChangeOrder = (idx) => {
     dispatch(changeOrder(idx));
   }
+
+  const getBalanceFunc = async (userAddress) => {
+    getBalance(userAddress)
+    .then(res => res.json())
+    .then(data => {
+      dispatch(changeBalance(data.value));
+    });
+
+    // console.log(_balance['value']);
+    // return _balance;
+  };
 
   // 컴포넌트가 처음 렌더링될 때 input 초기화
   useEffect(() => {
     dispatch(initializeField());
     dispatch(initializeOrder());
   }, [dispatch]);
+
+  //user가 생기면 user에 해당하는 balance 상태값 변경
+  useEffect(()=>{
+    if(userAddress) {
+      getBalanceFunc(userAddress);
+    }
+  }, [userAddress])
 
   return (
     <Header 
@@ -59,9 +69,8 @@ const HeaderContainer = () => {
       onChange={onChange}
       search={search}
       onChangeOrder={onChangeOrder}
-      onToggle={onToggle}
-      display={display}
       order={order}
+      balance={balance}
     />
   );
 };

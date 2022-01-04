@@ -32,7 +32,7 @@ const buttonStyle = css`
     css`
       background: ${OpenColor.green[8]};
       &:hover {
-        background: ${OpenColor.green[5]};
+        background: ${OpenColor.green[6]};
       }
     `}
   }

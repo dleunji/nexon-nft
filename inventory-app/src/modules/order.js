@@ -5,23 +5,18 @@ const TOGGLE_ORDER = 'dropdown/TOGGLE_ORDER';
 const CHANGE_ORDER = 'dropdown/CHANGE_ORDER';
 const INITIALIZE_ORDER = 'dropdown/INITIALIZE_ORDER';
 
-export const toggleOrder = createAction(TOGGLE_ORDER);
+// export const toggleOrder = createAction(TOGGLE_ORDER);
 // export const hoverOrder = createAction(HOVER_ORDER, idx => idx);
 export const changeOrder = createAction(CHANGE_ORDER, idx => idx);
 export const initializeOrder = createAction(INITIALIZE_ORDER);
 
 const initialState = {
-  display: false,
   // hover: -1,
   order: 0,
 };
 
 const order = handleActions(
   {
-    [TOGGLE_ORDER] : (state) => ({
-      ...state,
-      display: !state.display,
-    }),
     [CHANGE_ORDER] : (state, {payload: value}) => ({
       ...state,
       order: value
