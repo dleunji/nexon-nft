@@ -1,0 +1,12 @@
+{
+  "name" : "잉꼬부부의 결혼반지 2캐럿",
+  "category" : "반지",
+  "stat" : {
+    "STR" : 3,
+    "DEX" : 3,
+    "INT" : 3,
+    "LUK" : 3
+  },
+  "price": 5,
+  "image": "https://gateway.pinata.cloud/ipfs/QmY2Da4uX3Poo4ZDf4cS1pijvaE84wYVYoX7P9ymjCnskm"
+}

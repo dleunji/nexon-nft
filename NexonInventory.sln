@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexonInventory", "NexonInventory\NexonInventory.csproj", "{5A6F73EC-AA62-404A-95AA-7338F1322DA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NexonNFTLibrary", "NexonNFTLibrary\NexonNFTLibrary.csproj", "{B22D1FDA-AD9A-4F6C-A560-F5353DF0F0C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A6F73EC-AA62-404A-95AA-7338F1322DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A6F73EC-AA62-404A-95AA-7338F1322DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A6F73EC-AA62-404A-95AA-7338F1322DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A6F73EC-AA62-404A-95AA-7338F1322DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B22D1FDA-AD9A-4F6C-A560-F5353DF0F0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B22D1FDA-AD9A-4F6C-A560-F5353DF0F0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B22D1FDA-AD9A-4F6C-A560-F5353DF0F0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B22D1FDA-AD9A-4F6C-A560-F5353DF0F0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {564A9156-EBA4-4029-A11C-3C28DA63880D}
+	EndGlobalSection
+EndGlobal
