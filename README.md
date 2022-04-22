@@ -105,7 +105,7 @@
 | 주체                      | 설명                                                         |
 | ------------------------- | ------------------------------------------------------------ |
 | 이더리움 네트워크         | 💡 실제로 사용되는 이더리움을 위한 네트워크인 메인넷을 제외하고, 이더리움의 테스트넷은 크게 3가지(Goerli, Rinkeby, Ropsten)<br />💡이번 프로젝트에서는 메인넷 환경과 가장 유사한 Ropsten을 사용 |
-| 이더리움 노드(클라이언트) | 💡 이더리움 네트워크 블록체인에 참여하기 위한 하나의 컴퓨터<br />💡이더리움 노드에 접근하기 위해 JSON-RPC로 통신<br />💡 분산화된 노드는 트랜잭션의 유효성에 합의가 필요 → 현재, 이더리움의 경우 [PoW(작업 증명)](http://wiki.hash.kr/index.php/작업증명) 식의 합의 알고리즘 이용<br />💡노드에 접근하는 CLI로 가장 유명하고 많이 쓰이는 것은 Geth, Parity<br />하지만 DApp 개발에만 집중하기 위해 **[Infura](https://infura.io/docs/ethereum#section/Securing-Your-Credentials)**라는 플랫폼 서비스 활용해 API로 이더리움 노드에 접근. 즉 Infura가 대신 JSON-RPC API를 call해준다. <br />ex) 자신의 지갑 주소의 잔액 조회<br /><img width="797" alt="curl" src="https://user-images.githubusercontent.com/46207836/163969891-2864c4ad-8269-4d95-aec8-fe29410893e1.png"> |
+| 이더리움 노드(클라이언트) | 💡 이더리움 네트워크 블록체인에 참여하기 위한 하나의 컴퓨터<br />💡이더리움 노드에 접근하기 위해 JSON-RPC로 통신<br />💡 분산화된 노드는 트랜잭션의 유효성에 합의가 필요 → 현재, 이더리움의 경우 [PoW(작업 증명)](http://wiki.hash.kr/index.php/작업증명) 식의 합의 알고리즘 이용<br />💡노드에 접근하는 CLI로 가장 유명하고 많이 쓰이는 것은 Geth, Parity<br />하지만 DApp 개발에만 집중하기 위해 [**Infura**](https://infura.io/docs/ethereum#section/Securing-Your-Credentials)라는 플랫폼 서비스 활용해 API로 이더리움 노드에 접근. 즉 Infura가 대신 JSON-RPC API를 call해준다. <br />ex) 자신의 지갑 주소의 잔액 조회<br /><img width="797" alt="curl" src="https://user-images.githubusercontent.com/46207836/163969891-2864c4ad-8269-4d95-aec8-fe29410893e1.png"> |
 | Web3                      | 💡 기존의 중앙집중식 서버와 클라이언트의 구조를 벗어나서, 탈중앙화된 웹을 지향<br />💡 WWW의 차세대 버전사이트와 서비스가 분산된 컴퓨터 네트워크에 존재하도록 허용하고 블록체인 기술에 의존하여 사용자 데이터 검증웹의 참여자는 각각 비밀 키를 보유하고, 이를 사용해 사용자 식별 가능<br /><img width="599" alt="web3" src="https://user-images.githubusercontent.com/46207836/163970036-fd426630-cf83-4d2e-b835-9c0d1eabb05c.png"> |
 | Pinata                    | 💡 이더리움과 통신만 탈중앙화된 것이 아니라, 메타데이터도 분산 네트워크의 일종인 IPFS기반 클라우드 플랫폼인 Pinata에 저장<br />💡 NFT 이미지와 메타데이터 JSON모두 pinata에 저장 |
 
@@ -206,8 +206,9 @@ Saga Middleware를 사용하여 API 호출의 성공과 실패에 대한 처리�
 <img width="437" alt="change" src="https://user-images.githubusercontent.com/46207836/163974459-a64c7b5c-b1b5-41bd-9652-9408f57e9a42.png">
 
 - Overflow 주의
+
   - 거래 시에 부동소수점으로 인한 이진수 연산의 오차 가능성을 최소화하기 위해 이더 단위가 아니라 wei로 처리
-  
+
   - 스마트 컨트랙트상 tokenId의 경우 uint256 단위로 최대 256비트(32바이트)다. 이는 말그대로 BigInteger이기 때문에 단순한 number로 convert하면 왜곡 가능성이 존재하여 string으로 처리
     - 현재는 토큰의 개수가 많지 않지만 많은 양의 코인이 발행(Mint)될수록 오버플로우 주의
   - .NET에서는 **System.Numerics.BigInteger**로 이더리움 네트워크에서 balance를 처리
